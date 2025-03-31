@@ -1,4 +1,4 @@
-import express, { urlencoded } from "express";
+import express from "express";
 import connectDB from "./db/dbconfig.js";
 import Account from "./models/accountModel.js";
 import cors from "cors";
@@ -49,9 +49,9 @@ app.post("/api/add-account", async (req, res) => {
         .json({ message: `No user exists with this introducer Id` });
     }
     let beneficiaryId = await getBeneficiaryid(introducerId);
-    if(!beneficiaryId) {
-        return res.status(400).json({message : "Beneficiary errro"})
-    }
+    // if(!beneficiaryId) {
+    //     return res.status(400).json({message : "Beneficiary errro"})
+    // }
 
     let newAccount = await Account.create({
       accountId,
